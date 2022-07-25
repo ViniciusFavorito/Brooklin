@@ -1,12 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { categories } from "../../constants";
 import { getProducts } from "../../services/products";
-import { RootState } from "../../store";
 import {
   IProduct,
   setProducts,
 } from "../../store/features/products/productsSlice";
-import { DivSelect, SelectCategories } from "./styles";
+import { DivSelect, OptionCategories, SelectCategories } from "./styles";
 
 interface ICategories {
   name: string;
@@ -18,7 +17,6 @@ export function SelectCategory() {
   return (
     <DivSelect>
       <SelectCategories
-        placeholder="teste"
         onChange={(event) =>
           getProducts({ categoryId: event.target.value }).then(
             (res: IProduct[]) => {
@@ -27,11 +25,11 @@ export function SelectCategory() {
           )
         }
       >
-        <option value=""></option>
+        <OptionCategories value="">Todos as categorias</OptionCategories>
         {categories.map((categories: ICategories) => (
-          <option key={categories._id} value={categories._id}>
+          <OptionCategories key={categories._id} value={categories._id}>
             {categories.name}
-          </option>
+          </OptionCategories>
         ))}
       </SelectCategories>
     </DivSelect>

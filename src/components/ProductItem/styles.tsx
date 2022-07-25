@@ -63,6 +63,7 @@ export const DivDescription = styled.div`
   margin-bottom: 10px;
   opacity: 0.5;
   position: relative;
+  padding-bottom: 15px;
 `;
 
 export const ButtonBuy = styled.button`
